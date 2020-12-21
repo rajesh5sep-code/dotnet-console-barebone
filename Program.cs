@@ -19,28 +19,6 @@ namespace create_users
     {
         public static void Main(string[] args)
         {
-            //setup our DI
-            //ConfigurationBuilder config = new ConfigurationBuilder();
-            //IConfiguration configuration = config.Build();
-            //var serviceProvider = new ServiceCollection()
-            //     .AddTransient<IProcess,Process>()
-            //     .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
-            //     .AddLogging(cfg => cfg.AddConsole())
-            //     .AddHttpClient()
-            //     .AddOptions()
-            //     .AddUserAuthorityAuthenticationServices(configuration)
-            //     .Configure<LoggerFilterOptions>(cfg => cfg.MinLevel = LogLevel.Information)
-            //     .BuildServiceProvider();
-
-            //////configure console logging 
-            //var logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<Program>();
-            //logger.LogInformation("Starting application");
-
-            ////serviceProvider.GetService<IProcess>().AddUsers();
-            //var builder = new ConfigurationBuilder()
-            //    .SetBasePath(Directory.GetCurrentDirectory())
-            //    .AddJsonFile("appsettings.json");
-            //var config = builder.Build();
             var builder = new ConfigurationBuilder();
             BuildConfiguration(builder);
 
@@ -55,7 +33,7 @@ namespace create_users
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddUserAuthorityAuthenticationServices(builder.Build());
+                    //services.AddUserAuthorityAuthenticationServices(builder.Build());
                     services.AddTransient<IUserService, UserService>();
                 })
                 .UseSerilog()
